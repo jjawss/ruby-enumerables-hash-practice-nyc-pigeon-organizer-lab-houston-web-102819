@@ -20,14 +20,23 @@ pigeon_data = {
 
 
 def nyc_pigeon_organizer(data)
-  data[:color] 
-  data[:gender]
-  data[:lives]
-  data[:color].reduce({}) do |memo, (key, value)|
-    p key
-    memo
+  pigeon_list = {}
+    data.each do |c_g_l, value|
+      value.each do |traits, pigeon_names|
+        pigeon_names.each do |name|
+          if pigeon_list[name] == nil
+            pigeon_list[name] = {}
+          end
+          if pigeon_list[name][c_g_l] ==nil
+            pigeon_list[name][c_g_l] = []
+          end
+          pigeon_list[name][c_g_l].push(traits.to_s)
+        end
+      end
+    end
+    pigeon_list
   end
-end
+            
 nyc_pigeon_organizer(pigeon_data)
 
 #{}
